@@ -5,7 +5,7 @@ from offers_app.models import OfferDetail
 
 
 class Order(models.Model):
-    """Eine Bestellung eines Customers bei einem Business-User."""
+    """An order placed by a customer for a business user."""
 
     IN_PROGRESS = 'in_progress'
     COMPLETED = 'completed'

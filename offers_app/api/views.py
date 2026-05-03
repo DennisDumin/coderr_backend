@@ -9,6 +9,7 @@ from offers_app.models import Offer, OfferDetail
 from .permissions import IsBusinessUser, IsOfferCreator
 from .serializers import OfferDetailSerializer, OfferSerializer
 
+
 class OfferViewSet(ModelViewSet):
     """Handles offer CRUD with filtering, search and ordering."""
 
@@ -51,6 +52,7 @@ class OfferViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
+
 
 class OfferDetailRetrieveView(RetrieveAPIView):
     """Returns a single offer detail."""

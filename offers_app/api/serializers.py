@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from offers_app.models import Offer, OfferDetail
 
+
 class OfferDetailSerializer(serializers.ModelSerializer):
     """Serializes a single offer detail."""
 
@@ -16,6 +17,7 @@ class OfferDetailSerializer(serializers.ModelSerializer):
             "price",
             "features",
         ]
+
 
 class OfferSerializer(serializers.ModelSerializer):
     """Serializes offers including their details."""

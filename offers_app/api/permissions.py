@@ -2,6 +2,7 @@ from rest_framework.permissions import BasePermission
 
 from profiles_app.models import UserProfile
 
+
 class IsBusinessUser(BasePermission):
     """Allows only business users."""
 
@@ -13,6 +14,7 @@ class IsBusinessUser(BasePermission):
                 type=UserProfile.BUSINESS,
             ).exists()
         )
+
 
 class IsOfferCreator(BasePermission):
     """Allows only the offer creator."""

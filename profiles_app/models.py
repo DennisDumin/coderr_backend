@@ -3,7 +3,7 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    """Erweitert den Django User um Profil-Informationen."""
+    """Extends the Django user model with profile information."""
 
     CUSTOMER = 'customer'
     BUSINESS = 'business'

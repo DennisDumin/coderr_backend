@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Offer(models.Model):
-    """Ein Angebot eines Business-Users auf der Plattform."""
+    """An offer created by a business user on the platform."""
 
     creator = models.ForeignKey(
         User,
@@ -26,7 +26,7 @@ class Offer(models.Model):
 
 
 class OfferDetail(models.Model):
-    """Die 3 Pakete (basic, standard, premium) eines Angebots."""
+    """The three packages of an offer: basic, standard and premium."""
 
     BASIC = 'basic'
     STANDARD = 'standard'

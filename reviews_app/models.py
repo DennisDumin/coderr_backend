@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Review(models.Model):
-    """Bewertung eines Business-Users durch einen Customer."""
+    """A review of a business user written by a customer."""
 
     business_user = models.ForeignKey(
         User,
