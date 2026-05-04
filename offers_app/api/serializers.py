@@ -25,6 +25,7 @@ class OfferSerializer(serializers.ModelSerializer):
     details = OfferDetailSerializer(many=True)
     user = serializers.IntegerField(source="creator.id", read_only=True)
     min_price = serializers.SerializerMethodField()
+    min_delivery_time = serializers.SerializerMethodField()
 
     class Meta:
         model = Offer
@@ -36,6 +37,7 @@ class OfferSerializer(serializers.ModelSerializer):
             "description",
             "details",
             "min_price",
+            "min_delivery_time",
             "created_at",
             "updated_at",
         ]
@@ -44,6 +46,13 @@ class OfferSerializer(serializers.ModelSerializer):
     def get_min_price(self, obj):
         prices = obj.details.values_list("price", flat=True)
         return min(prices) if prices.exists() else None
+
+    def get_min_delivery_time(self, obj):
+        delivery_times = obj.details.values_list(
+            "delivery_time_in_days",
+            flat=True,
+        )
+        return min(delivery_times) if delivery_times.exists() else None
 
     def validate_details(self, value):
         required_types = {"basic", "standard", "premium"}
