@@ -32,6 +32,7 @@ class BusinessProfileListView(ListAPIView):
 
     serializer_class = ProfileListSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         return UserProfile.objects.filter(type=UserProfile.BUSINESS)
@@ -42,6 +43,7 @@ class CustomerProfileListView(ListAPIView):
 
     serializer_class = ProfileListSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         return UserProfile.objects.filter(type=UserProfile.CUSTOMER)
