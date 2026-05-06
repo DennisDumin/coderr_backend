@@ -56,7 +56,17 @@ class OfferSerializer(serializers.ModelSerializer):
 
     def validate_details(self, value):
         required_types = {"basic", "standard", "premium"}
-        given_types = {detail["offer_type"] for detail in value}
+        given_types = set()
+
+        for detail in value:
+            offer_type = detail.get("offer_type")
+
+            if not offer_type:
+                raise serializers.ValidationError(
+                    "offer_type is required for every detail."
+                )
+
+            given_types.add(offer_type)
 
         if not self.instance and given_types != required_types:
             raise serializers.ValidationError(
